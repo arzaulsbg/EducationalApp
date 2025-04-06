@@ -40,7 +40,7 @@ AcademyVite is an adaptive learning platform designed to make education engaging
 
 1. **Start the backend server:**
    ```bash
-   node server.js
+   <!-- node server.js -->
    ```
 
 2. **Start the frontend development server:**
@@ -68,3 +68,31 @@ This project is licensed under the MIT License.
 ## Contact
 
 For questions or support, please contact [your email].
+
+## Steps to Fix Dependency Conflict
+
+1. **Use `--legacy-peer-deps`:**
+   - Modify your deployment script to use `--legacy-peer-deps` when installing dependencies. This can be done by adding a `.npmrc` file in your project root with the following content:
+     ```
+     legacy-peer-deps=true
+     ```
+
+2. **Update `package.json`:**
+   - Ensure your `package.json` specifies compatible versions of dependencies. If `react-google-login` is not essential, consider removing or replacing it with a compatible package.
+
+3. **Remove `react-google-login`:**
+   - If it's not critical, you can uninstall it:
+     ```bash
+     npm uninstall react-google-login
+     ```
+
+4. **Re-deploy:**
+   - After making these changes, try deploying again on Vercel.
+
+### Additional Considerations
+
+- **Check for Updates:**
+  - Ensure all your packages are up to date and compatible with React 18.
+
+- **Alternative Packages:**
+  - Consider using alternative packages for Google login that support React 18.
